@@ -1,0 +1,85 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: 'Item',
+    typeNamePlural: 'Items',
+    typeImageUrl: '',
+    title: {
+        type: #STANDARD,
+        value: 'Description'
+    },
+    description: {
+        type: #STANDARD,
+        value: 'Description'
+    }
+}
+
+@Search.searchable: true
+
+annotate entity ZCDS_ZITEM_4355 with
+{
+
+    @UI: {
+      facet : [
+               { id: 'IdHeader',
+                 label : 'Detalles del Libro',
+                 type: #COLLECTION,
+                 position: 10},
+
+                 { id: 'IdItem',
+                 parentId: 'IdHeader',
+                 label : 'Detalles',
+                 type: #FIELDGROUP_REFERENCE,
+                 targetQualifier: 'IdHeader',
+                 position: 20}],
+
+        fieldGroup: [{ qualifier: 'IdHeader',
+                       position: 10 }]
+  }
+  IdHeader;
+  
+  @UI: { lineItem: [{ position: 10,
+                      importance: #HIGH }],
+         selectionField: [{ position: 10 }]}
+  IdItem;
+  
+  @Search.defaultSearchElement: true
+  @Search.fuzzinessThreshold: 0.9
+  @Search.ranking: #HIGH
+  //con selectionField se crea filtro o busqueda
+  @UI: { selectionField: [{ position: 40 }]} 
+  @UI: { lineItem: [{ position: 81,
+                      importance: #HIGH }]}
+  Name;
+  
+  @UI: { lineItem: [{ position: 20,
+                      importance: #HIGH }]}
+  Description;
+  //con Consumption.valueHelpDefinition se crea una ayuda de busqueda con valores
+  @UI: { fieldGroup: [{ qualifier: 'IdHeader',
+                        position: 30}],
+         selectionField: [{ position: 20 }]}
+  ReleaseDate;
+  @UI: { lineItem: [{ position: 30,
+                     importance: #HIGH }]}
+  DiscontinuedDate;
+  @UI: { lineItem: [{ position: 40,
+                      importance: #HIGH }]}
+  Price;
+  @UI: { lineItem: [{ position: 50,
+                      importance: #HIGH }]}
+  Height;
+  @UI: { lineItem: [{ position: 60,
+                      importance: #HIGH }]}
+  Width;
+  
+  @UI: { lineItem: [{ position: 70,
+                      importance: #HIGH }]}
+  Depth;
+  
+  @UI: { fieldGroup: [{ qualifier: 'IdHeader',
+                        position: 40}]}
+  Quantity;
+  @UI: { fieldGroup: [{ qualifier: 'IdHeader',
+                        position: 50}]}
+  Unitofmeasure;
+}

@@ -1,0 +1,92 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: 'HEADER',
+    typeNamePlural: 'CABECERA',
+    imageUrl: 'ImageUrl',
+    title: {
+        type: #STANDARD,
+        value: 'FirstName'
+    },
+    description: {
+        type: #STANDARD,
+        value: 'IdHeader'
+    }
+}
+
+@Search.searchable: true
+
+annotate entity ZCDS_ZHEADER_4355 with
+{    
+  @UI: {
+    facet : [
+             { id: 'IdHeader',
+               label : 'Detalles de CABECERA',
+               type: #COLLECTION,
+               position: 10},
+
+               { id: 'FirstName',
+               parentId: 'IdHeader',
+               label : 'NOMBRE',
+               type: #FIELDGROUP_REFERENCE,
+               targetQualifier: 'IdHeader',
+               position: 10},
+
+               { id: 'Description',
+               label : 'Compradores',
+               type: #LINEITEM_REFERENCE,
+               targetElement: '_Items',
+               position: 30}],
+
+      fieldGroup: [{ qualifier: 'IdHeader',
+                     position: 10 }]
+  }
+    @UI: { lineItem: [{ position: 15,
+                      importance: #HIGH }],
+         selectionField: [{ position: 15 }]}
+  IdHeader;
+
+  @UI: { lineItem: [{ position: 20,
+                      importance: #HIGH }],
+         selectionField: [{ position: 10 }]}
+  Email;
+
+    @Search.defaultSearchElement: true
+    @Search.fuzzinessThreshold: 0.9
+   @Search.ranking: #HIGH
+  //  //con selectionField se crea filtro o busqueda
+  @UI: { selectionField: [{ position: 30 }]}
+  @UI: { lineItem: [{ position: 81,
+                      importance: #HIGH }]}
+  FirstName;
+
+  @UI: { lineItem: [{ position: 40,
+                      importance: #HIGH }]}
+  LastName;
+  //  //con Consumption.valueHelpDefinition se crea una ayuda de busqueda con valores
+  //  @Consumption.valueHelpDefinition: [{ entity:{ name: 'zcds_catego_lgl',
+  //                                                element: 'Descripcion'} }]
+  //  @UI: { fieldGroup: [{ qualifier: 'DetallesLibro',
+  //                        position: 20}],
+  //         selectionField: [{ position: 20 }]}
+  @UI: { lineItem: [{ position: 50,
+                   importance: #HIGH }]}
+  Country;
+  @UI: { lineItem: [{ position: 60,
+                     importance: #HIGH }]}
+  Createon;
+  @UI: { lineItem: [{ position: 70,
+                      importance: #HIGH }],
+                        fieldGroup: [{ qualifier: 'IdHeader',
+                          position: 40 }]}
+  DeliveryDate;
+  @UI: { lineItem: [{ position: 80,
+                      importance: #HIGH }],
+                        fieldGroup: [{ qualifier: 'IdHeader',
+                          position: 50 }]}
+  OrderStatus;
+  @UI: { lineItem: [{ position: 80,
+                      importance: #HIGH }],
+                        fieldGroup: [{ qualifier: 'IdHeader',
+                          position: 60 }]}
+  ImageUrl;
+}
