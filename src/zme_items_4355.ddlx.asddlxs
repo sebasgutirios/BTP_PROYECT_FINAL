@@ -15,7 +15,7 @@
 
 @Search.searchable: true
 
-annotate entity ZCDS_ZITEM_4355 with
+annotate entity ZCDS_ITEM_4355 with
 {
 
     @UI: {

@@ -15,7 +15,7 @@
 
 @Search.searchable: true
 
-annotate entity ZCDS_ZHEADER_4355 with
+annotate entity ZCDS_HEADER_4355 with
 {    
   @UI: {
     facet : [
@@ -34,7 +34,7 @@ annotate entity ZCDS_ZHEADER_4355 with
                { id: 'Description',
                label : 'Compradores',
                type: #LINEITEM_REFERENCE,
-               targetElement: '_Items',
+               targetElement: '_Item',
                position: 30}],
 
       fieldGroup: [{ qualifier: 'IdHeader',
@@ -79,12 +79,20 @@ annotate entity ZCDS_ZHEADER_4355 with
                         fieldGroup: [{ qualifier: 'IdHeader',
                           position: 40 }]}
   DeliveryDate;
-  @UI: { lineItem: [{ position: 80,
-                      importance: #HIGH }],
-                        fieldGroup: [{ qualifier: 'IdHeader',
-                          position: 50 }]}
+//  @UI: { lineItem: [{ position: 80,
+//                      importance: #HIGH }],
+//                        fieldGroup: [{ qualifier: 'IdHeader',
+//                          position: 50 }]}
+//  OrderStatus;
+  
+
+      @UI: { lineItem: [{ position: 85,
+                      label: 'OrderStatus2',
+                      importance: #HIGH,
+                      criticality: 'OrderStatus' }]}
   OrderStatus;
-  @UI: { lineItem: [{ position: 80,
+  
+  @UI: { lineItem: [{ position: 90,
                       importance: #HIGH }],
                         fieldGroup: [{ qualifier: 'IdHeader',
                           position: 60 }]}
